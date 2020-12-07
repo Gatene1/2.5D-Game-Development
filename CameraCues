@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraCues : MonoBehaviour
+{
+    private Transform _player;
+    private Vector3 _offset;
+
+    private void Start()
+    {
+        _player = GameObject.Find("Player").GetComponent<Transform>();
+        _offset = _player.transform.position - transform.position;
+    }
+
+    private void Update()
+    {
+        _player = GameObject.Find("Player").GetComponent<Transform>();
+        float newYPosition = _player.transform.position.y - _offset.y;
+        float newZPosition = _player.transform.position.z - _offset.z;
+
+        transform.position = new Vector3(transform.position.x, newYPosition, newZPosition);
+        transform.eulerAngles = new Vector3(10.350235f, 273.295837f, 0.447842866f);
+
+    }
+}
